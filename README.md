@@ -5,8 +5,6 @@ When I first started doing development, I thought accounting was a common idea. 
 
 
 
-好的，我可以帮助您理顺这些新功能的开发顺序。以下是根据功能的相关性、开发复杂度和用户价值排序的建议：
-
 ### **第一阶段：核心功能增强**
 
 1. **日历化显示和可视化**
