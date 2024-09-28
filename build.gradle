@@ -1,0 +1,90 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "me.bakumon.moneykeeper"
+        minSdk 29
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+        namespace 'me.bakumon.moneykeeper'
+
+
+
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    viewBinding {
+        enabled = true
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    // AndroidX dependencies
+    implementation 'androidx.core:core-ktx:1.13.0' // Use core-ktx instead of core
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.activity:activity-ktx:1.7.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation "androidx.browser:browser:1.6.0"
+
+    // RxJava and RxAndroid
+    implementation 'io.reactivex.rxjava3:rxjava:3.1.6'
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
+
+    // UI libraries
+    implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.6"
+    implementation 'pub.devrel:easypermissions:3.0.0' // Ensure this is AndroidX compatible
+    implementation 'org.ocpsoft.prettytime:prettytime:5.0.8.Final'
+    implementation libs.leakcanary.android.no.op
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
+    implementation 'de.hdodenhof:circleimageview:3.1.0' // Check for AndroidX compatibility
+    implementation ('com.github.PhilJay:MPAndroidChart:v3.1.0') {
+        exclude group: 'com.android.support'
+    }
+
+
+
+
+    def room_version = "2.4.3" // 确保使用最新版本
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+
+    implementation "androidx.room:room-rxjava3:$room_version"
+
+    // Testing libraries
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    // Exclude support libraries from third-party dependencies
+    implementation('me.drakeet.floo:floo:1.2.0') {
+        exclude group: 'com.android.support'
+    }
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
+
+
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.22"))
+
+}
